@@ -1,0 +1,43 @@
+1- Create Database in phpmyadmmin
+2- Discuss possible Relationship Entity Models:
+    * Provincia
+        - id
+        - nombre
+    * Localidad
+        - id
+        - nombre
+        - provincia_id
+    * Barrio
+        - id
+        - nombre
+        _ localidad_id
+    * Sector/ Area 
+        - id
+        - nombre
+        - interno
+        - correo
+    * Persona
+        - id
+        - nombre
+        - apellido
+        - correo
+        - dni
+        - legajo
+        - fechaNacimiento
+        - area_id
+        - barrio_id
+    * Registro
+        - id
+        - fechaHoraIngreso
+        - fechaHoraEgreso
+        - persona_id
+ 3-  Sort tables by their PK and FK  
+
+ Note: If drop Provincia Table is required by client (Empty Table):
+  - Borrar la clave foranea provincia_id de Barrio
+  - Cambiar el nombre de provincia_id a localidad_id en Barrio
+  - Borrar provincia_id de Barrio y crear una nueva columna llamada localidad_id
+  - Crear la relación de FK
+    
+    
+
