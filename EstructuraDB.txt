@@ -37,7 +37,12 @@
   - Borrar la clave foranea provincia_id de Barrio
   - Cambiar el nombre de provincia_id a localidad_id en Barrio
   - Borrar provincia_id de Barrio y crear una nueva columna llamada localidad_id
-  - Crear la relación de FK
+  - Crear la relación de FK:
+
+    $table->unsignedBigInteger('provincia_id');
+ 
+    $table->foreign('provincia_id')->references('id')->on('provincias');
+});
     
     
 
