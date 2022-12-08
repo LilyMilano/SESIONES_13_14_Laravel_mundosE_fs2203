@@ -2,8 +2,11 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProvinciaController;
+use App\Http\Controllers\AreaController;
+use App\Http\Controllers\BarrioController;
+use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\LocalidadController;
+use App\Http\Controllers\ProvinciaController;
 
 
 /*
@@ -44,3 +47,48 @@ Route::post('postLocalidad', [LocalidadController::class, 'store']);
 Route::put('updateLocalidad', [LocalidadController::class, 'update']);
 // borrar una localidad
 Route::delete('borrarLocalidad/{id}', [LocalidadController::class, 'destroy']);
+
+/**
+* Barrio
+*/
+// Listar todos
+Route::get('getAllBarrios', [BarrioController::class, 'index']);
+// Listar un barrio
+Route::get('getBarrio/{id}', [BarrioController::class, 'show']);
+// Registrar un barrio
+Route::post('postBarrio', [BarrioController::class, 'store']);
+// Actualizar un barrio
+Route::put('updateBarrio', [BarrioController::class, 'update']);
+// borrar un barrio
+Route::delete('borrarBarrio/{id}', [BarrioController::class, 'destroy']);
+
+
+/**
+* Area
+*/
+// Listar todos
+Route::get('getAllAreas', [AreaController::class, 'index']);
+// Listar un area
+Route::get('getArea/{id}', [AreaController::class, 'show']);
+// Registrar un area
+Route::post('postArea', [AreaController::class, 'store']);
+// Actualizar un area
+Route::put('updateArea', [AreaController::class, 'update']);
+// borrar un area
+Route::delete('borrarArea/{id}', [AreaController::class, 'destroy']);
+
+
+/**
+* Persona
+*/
+// Listar todos
+Route::get('getAllPersonas', [PersonaController::class, 'index']);
+// Listar una persona
+Route::get('getPersona/{id}', [PersonaController::class, 'show']);
+// Registrar una persona
+Route::post('postPersona', [PersonaController::class, 'store']);
+// Actualizar una persona
+Route::put('updatePersona', [PersonaController::class, 'update']);
+// borrar una persona
+Route::delete('borrarPersona/{id}', [PersonaController::class, 'destroy']);
+//este es un comentario
