@@ -14,17 +14,20 @@ class AreaController extends Controller
      */
     public function index()
     {
-        //
-    }
+        //SELECT id, nombre FROM areas;
+        $areas = Area::select('id', 'nombre')->get();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $data = $areas->map(function ($area) {
+            return [
+                'area_id' => $area->id,
+                'area_nombre' => $area->nombre,
+            ];
+        });
+
+        return response()->json([
+            'mensaje' => 'Listado de areas disponibles',
+            'data' => $data,
+        ]);
     }
 
     /**
@@ -35,7 +38,21 @@ class AreaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Validación
+        $request->validate([
+            'nombre' => ['required'],
+            'interno' => ['required', 'integer', 'max:4'],
+        ]);
+
+        $area = Area::create([
+            'nombre' => $request['nombre'],
+            'interno' => $request['interno'],
+        ]);
+
+        return response()->json([
+            'mensaje' => 'Se Agrego Correctamente el area',
+            'data' => $area,
+        ]);
     }
 
     /**
@@ -44,20 +61,20 @@ class AreaController extends Controller
      * @param  \App\Models\Area  $area
      * @return \Illuminate\Http\Response
      */
-    public function show(Area $area)
+    public function show(int $id)
     {
-        //
-    }
+        $data = Area::findOrFail($id);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Area  $area
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Area $area)
-    {
-        //
+        $area = [
+            'area_id' => $data->id,
+            'area_nombre' => $data->nombre,
+            'area_interno' => $data->interno,
+        ];
+
+        return response()->json([
+            'mensaje' => 'Datos del area solicitada',
+            'data' => $area,
+        ]);
     }
 
     /**
@@ -67,9 +84,22 @@ class AreaController extends Controller
      * @param  \App\Models\Area  $area
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Area $area)
+    public function update(Request $request, int $id)
     {
-        //
+        $request->validate([
+            'nombre' => ['required'],
+            'interno' => ['required', 'integer', 'max:4'],
+        ]);
+
+        $area = Area::findOrFail($id);
+        $area->nombre = $request['nombre'];
+        $area->interno = $request['interno'];
+        $area->save();
+
+        return response()->json([
+            'mensaje' => 'Datos del area modificada',
+            'data' => $area,
+        ]);
     }
 
     /**
@@ -78,8 +108,14 @@ class AreaController extends Controller
      * @param  \App\Models\Area  $area
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Area $area)
+    public function destroy(int $id)
     {
-        //
+        $area = Area::findOrFail($id);
+        $area->delete();
+
+        return response()->json([
+            'mensaje' => 'El area se elimino correctamente',
+            'data' => $area,
+        ]);
     }
 }
