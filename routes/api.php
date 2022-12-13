@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\BarrioController;
 use App\Http\Controllers\PersonaController;
+use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\LocalidadController;
 use App\Http\Controllers\ProvinciaController;
 
@@ -92,3 +93,10 @@ Route::put('updatePersona', [PersonaController::class, 'update']);
 // borrar una persona
 Route::delete('borrarPersona/{id}', [PersonaController::class, 'destroy']);
 //este es un comentario
+
+
+/**
+ * Registro
+ */
+
+Route::resource('registros', RegistroController::class);
