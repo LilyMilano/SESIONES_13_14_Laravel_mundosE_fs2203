@@ -1,14 +1,13 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\BarrioController;
-use App\Http\Controllers\PersonaController;
-use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\LocalidadController;
+use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\ProvinciaController;
-
+use App\Http\Controllers\RegistroController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,10 +33,9 @@ Route::get('getAllProvincias', [ProvinciaController::class, 'index']);
 // Listar un provincia
 Route::get('getProvincia/{id}', [ProvinciaController::class, 'show']);
 
-
 /**
-* Localidad
-*/
+ * Localidad
+ */
 // Listar todos
 Route::get('getAllLocalidades', [LocalidadController::class, 'index']);
 // Listar una localidad
@@ -50,8 +48,8 @@ Route::put('updateLocalidad', [LocalidadController::class, 'update']);
 Route::delete('borrarLocalidad/{id}', [LocalidadController::class, 'destroy']);
 
 /**
-* Barrio
-*/
+ * Barrio
+ */
 // Listar todos
 Route::get('getAllBarrios', [BarrioController::class, 'index']);
 // Listar un barrio
@@ -63,10 +61,9 @@ Route::put('updateBarrio', [BarrioController::class, 'update']);
 // borrar un barrio
 Route::delete('borrarBarrio/{id}', [BarrioController::class, 'destroy']);
 
-
 /**
-* Area
-*/
+ * Area
+ */
 // Listar todos
 Route::get('getAllAreas', [AreaController::class, 'index']);
 // Listar un area
@@ -78,10 +75,9 @@ Route::put('updateArea', [AreaController::class, 'update']);
 // borrar un area
 Route::delete('borrarArea/{id}', [AreaController::class, 'destroy']);
 
-
 /**
-* Persona
-*/
+ * Persona
+ */
 // Listar todos
 Route::get('getAllPersonas', [PersonaController::class, 'index']);
 // Listar una persona
@@ -94,9 +90,7 @@ Route::put('updatePersona', [PersonaController::class, 'update']);
 Route::delete('borrarPersona/{id}', [PersonaController::class, 'destroy']);
 //este es un comentario
 
-
 /**
  * Registro
  */
-
 Route::resource('registros', RegistroController::class);

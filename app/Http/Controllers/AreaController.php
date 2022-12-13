@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Area;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class AreaController extends Controller
 {
@@ -38,18 +39,26 @@ class AreaController extends Controller
      */
     public function store(Request $request)
     {
+       //dd($request['nombre']);
         //Validación
         $request->validate([
             'nombre' => ['required'],
-            'interno' => ['required', 'integer', 'max:4'],
+            'interno' => ['required', 'integer', 'max:9999'],
         ]);
 
         $area = Area::create([
             'nombre' => $request['nombre'],
             'interno' => $request['interno'],
         ]);
-
-        return response()->json([
+        
+        $details = [
+            'title' => 'Area: ' . $area->nombre,
+            'body' => 'interno: '.$area->interno
+            ];
+            
+            Mail::to('milanoliliana129@gmail.com')->send(new \App\Mail\sendPost($details));
+    
+            return response()->json([
             'mensaje' => 'Se Agrego Correctamente el area',
             'data' => $area,
         ]);

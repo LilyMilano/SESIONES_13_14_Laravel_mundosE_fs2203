@@ -30,4 +30,4 @@ class CreateProvinciasTable extends Migration
     {
         Schema::dropIfExists('provincias');
     }
-};
+}

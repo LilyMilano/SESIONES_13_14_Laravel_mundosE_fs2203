@@ -8,13 +8,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Provincia extends Model
 {
     use SoftDeletes;
-    
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'provincias'; 
+    protected $table = 'provincias';
 
     /**
      * The primary key associated with the table.
